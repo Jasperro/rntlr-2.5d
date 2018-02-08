@@ -8,10 +8,10 @@ path.etc2="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex"
 [deps]
 
 source_file="res://icon.png"
-source_md5="ae7e641067601e2184afcade49abd283"
+source_md5="500da7383831540c17b47140d3fdfb8e"
 
 dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.stex", "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.stex" ]
-dest_md5="e5f68a13b29daf9ec0597ea9ae52706b"
+dest_md5="d0d9a3b139b662c7d11d6b669e6993ea"
 
 [params]
 

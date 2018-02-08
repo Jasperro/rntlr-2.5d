@@ -2,6 +2,7 @@ extends KinematicBody
 
 var g = -10
 var vel = Vector3()
+var lifes = 3
 const MAX_SPEED = 5
 const MAX_RUN_SPEED = 9
 const JUMP_SPEED = 7
@@ -58,6 +59,12 @@ func _physics_process(delta):
 		
 	if get_global_transform().origin.y < 0:
 		set_translation(Vector3(0,1,0))
+		lifes = lifes - 1
+	
+	if lifes == 0:
+		set_translation(Vector3(0,1,0))
+		lifes = 3
+		print("YOU DIED")
 	
 	var playerx = get_global_transform().origin.x
 	var playery = get_global_transform().origin.y
