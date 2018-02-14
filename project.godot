@@ -13,9 +13,18 @@ config_version=3
 config/name="R&tLR 2.5D"
 run/main_scene="res://titlescreen.tscn"
 boot_splash/image="res://icon.png"
-boot_splash/fullsize=false
 config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
+window/dpi/allow_hidpi=true
+
+[physics]
+
+2d/thread_model=2
 
 [rendering]
 
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"

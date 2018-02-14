@@ -1,10 +1,10 @@
 extends Spatial
 var camsetting = 3
 
-func _process(delta):		
+func _physics_process(delta):
 	if (Input.is_key_pressed(KEY_ESCAPE)):
-		get_node("../pause_popup").set_exclusive(true)
-		get_node("../pause_popup").popup()
+		get_node("../UI/pause_popup").set_exclusive(true)
+		get_node("../UI/pause_popup").popup()
 		get_tree().set_pause(true)
 	
 	if (camsetting > 10 or camsetting < -3):
@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 func _on_unpause_pressed():
-	get_node("../pause_popup").hide()
+	get_node("../UI/pause_popup").hide()
 	get_tree().set_pause(false)
 
 func _input(event):

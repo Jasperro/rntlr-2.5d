@@ -1,9 +1,12 @@
 extends Button
-var ready
-func _on_Button_pressed():
-	ready = 1
-	get_node("../Container/Loading").show()
-	get_node("../Container/Logo").hide()
-func _gui_input(event):
-	if ready == 1:
-		get_tree().change_scene("res://level1.tscn")
+
+func _on_Button_button_down():
+	get_node("../CenterContainer/Loading").show()
+	get_node("../CenterContainer/AnimatedSprite").hide()
+	margin_top = -999
+	margin_bottom = -999
+	margin_left = -999
+	margin_right = -999
+
+func _on_Button_button_up():
+	get_tree().change_scene("res://level1.tscn")

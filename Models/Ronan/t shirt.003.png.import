@@ -1,0 +1,33 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/t shirt.003.png-a72dd889e90de20bf6c72f0379fcabb7.s3tc.stex"
+path.etc2="res://.import/t shirt.003.png-a72dd889e90de20bf6c72f0379fcabb7.etc2.stex"
+
+[deps]
+
+source_file="res://Models/Ronan/t shirt.003.png"
+source_md5="c28de123ce9a83d6c80a1d880b375e65"
+
+dest_files=[ "res://.import/t shirt.003.png-a72dd889e90de20bf6c72f0379fcabb7.s3tc.stex", "res://.import/t shirt.003.png-a72dd889e90de20bf6c72f0379fcabb7.etc2.stex" ]
+dest_md5="c630e2361b1b6b6a1d97c79460bf8a41"
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

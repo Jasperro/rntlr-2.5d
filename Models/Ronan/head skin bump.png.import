@@ -1,0 +1,33 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/head skin bump.png-06921cbb394dc9fd21e7c1fe3ec748e9.s3tc.stex"
+path.etc2="res://.import/head skin bump.png-06921cbb394dc9fd21e7c1fe3ec748e9.etc2.stex"
+
+[deps]
+
+source_file="res://Models/Ronan/head skin bump.png"
+source_md5="af806363872a0ebc0b464e2d036726cd"
+
+dest_files=[ "res://.import/head skin bump.png-06921cbb394dc9fd21e7c1fe3ec748e9.s3tc.stex", "res://.import/head skin bump.png-06921cbb394dc9fd21e7c1fe3ec748e9.etc2.stex" ]
+dest_md5="3579347009b8a7dad27bc61a8a5b3aef"
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

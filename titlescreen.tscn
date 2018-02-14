@@ -1,21 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://StartGame.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://loadingscreen.png" type="Texture" id=3]
+[ext_resource path="res://719429_1.ogg" type="AudioStream" id=2]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=3]
+[ext_resource path="res://loadingscreen.png" type="Texture" id=4]
+[ext_resource path="res://Idle/1.png" type="Texture" id=5]
+[ext_resource path="res://Idle/2.png" type="Texture" id=6]
+[ext_resource path="res://Idle/3.png" type="Texture" id=7]
+[ext_resource path="res://Idle/4.png" type="Texture" id=8]
+[ext_resource path="res://Idle/5.png" type="Texture" id=9]
+[ext_resource path="res://Idle/6.png" type="Texture" id=10]
+[ext_resource path="res://Idle/7.png" type="Texture" id=11]
+[ext_resource path="res://Idle/8.png" type="Texture" id=12]
+[ext_resource path="res://Idle/9.png" type="Texture" id=13]
+[ext_resource path="res://Idle/10.png" type="Texture" id=14]
+[ext_resource path="res://Idle/11.png" type="Texture" id=15]
+[ext_resource path="res://Idle/12.png" type="Texture" id=16]
+[ext_resource path="res://Walking/1.png" type="Texture" id=17]
+[ext_resource path="res://Walking/2.png" type="Texture" id=18]
+[ext_resource path="res://Walking/3.png" type="Texture" id=19]
+[ext_resource path="res://Walking/4.png" type="Texture" id=20]
+[ext_resource path="res://Walking/5.png" type="Texture" id=21]
+[ext_resource path="res://Walking/6.png" type="Texture" id=22]
+[ext_resource path="res://Walking/7.png" type="Texture" id=23]
+[ext_resource path="res://Walking/8.png" type="Texture" id=24]
+[ext_resource path="res://Walking/9.png" type="Texture" id=25]
+[ext_resource path="res://Walking/10.png" type="Texture" id=26]
 
-[node name="Node" type="Node" index="0"]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+} ]
+
+[node name="Node" type="Node"]
 
 [node name="Button" type="Button" parent="." index="0"]
 
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -36.0
-margin_top = -232.0
+margin_top = 30.0
 margin_right = 36.0
-margin_bottom = -212.0
+margin_bottom = 50.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
@@ -30,38 +67,52 @@ text = "Start Spel"
 flat = false
 align = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Margin", "Pause", "Visibility" ]
+_sections_unfolded = [ "Anchor", "Margin", "Pause", "Visibility" ]
 
-[node name="Container" type="Container" parent="." index="1"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 2 )
+volume_db = 10.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+script = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="." index="2"]
 
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_top = 40.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+use_top_left = false
 
-[node name="Logo" type="Sprite" parent="Container" index="0"]
-
-position = Vector2( 20, 20 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Loading" type="Sprite" parent="Container" index="1"]
+[node name="Loading" type="Sprite" parent="CenterContainer" index="0"]
 
 visible = false
-position = Vector2( 20, 34 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer" index="1"]
+
+frames = SubResource( 1 )
+animation = "walking"
+frame = 2
+playing = true
+offset = Vector2( 0, -50 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="button_down" from="Button" to="Button" method="_on_Button_button_down"]
+
+[connection signal="button_up" from="Button" to="Button" method="_on_Button_button_up"]
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_AudioStreamPlayer_finished"]
 
 

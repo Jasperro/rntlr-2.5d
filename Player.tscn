@@ -1,0 +1,131 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Idle/1.png" type="Texture" id=2]
+[ext_resource path="res://Idle/2.png" type="Texture" id=3]
+[ext_resource path="res://Idle/3.png" type="Texture" id=4]
+[ext_resource path="res://Idle/4.png" type="Texture" id=5]
+[ext_resource path="res://Idle/5.png" type="Texture" id=6]
+[ext_resource path="res://Idle/6.png" type="Texture" id=7]
+[ext_resource path="res://Idle/7.png" type="Texture" id=8]
+[ext_resource path="res://Idle/8.png" type="Texture" id=9]
+[ext_resource path="res://Idle/9.png" type="Texture" id=10]
+[ext_resource path="res://Idle/10.png" type="Texture" id=11]
+[ext_resource path="res://Idle/11.png" type="Texture" id=12]
+[ext_resource path="res://Idle/12.png" type="Texture" id=13]
+[ext_resource path="res://Walking/1.png" type="Texture" id=14]
+[ext_resource path="res://Walking/2.png" type="Texture" id=15]
+[ext_resource path="res://Walking/3.png" type="Texture" id=16]
+[ext_resource path="res://Walking/4.png" type="Texture" id=17]
+[ext_resource path="res://Walking/5.png" type="Texture" id=18]
+[ext_resource path="res://Walking/6.png" type="Texture" id=19]
+[ext_resource path="res://Walking/7.png" type="Texture" id=20]
+[ext_resource path="res://Walking/8.png" type="Texture" id=21]
+[ext_resource path="res://Walking/9.png" type="Texture" id=22]
+[ext_resource path="res://Walking/10.png" type="Texture" id=23]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 0.168448, 0.4, 0.1 )
+
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 0.6, 0.6, 0.6 )
+
+[node name="Player" type="KinematicBody"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 3
+collision_mask = 3
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = true
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = true
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Axis Lock", "Collision", "Pause", "Transform", "Visibility", "collision" ]
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="." index="0"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, -2.4 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+frames = SubResource( 1 )
+animation = "walking"
+playing = true
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PlayerBadCollision" type="Area" parent="." index="2"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 8
+collision_mask = 8
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Audio Bus", "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerBadCollision" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="PlayerBadCollision" to="." method="_on_PlayerBadCollision_body_entered"]
+
+

@@ -2,7 +2,8 @@ extends KinematicBody
 
 var g = -10
 var vel = Vector3()
-var lifes = 3
+var lives = 3
+var projdir = 0.4
 const MAX_SPEED = 5
 const MAX_RUN_SPEED = 9
 const JUMP_SPEED = 7
@@ -16,14 +17,18 @@ func _physics_process(delta):
 	
 	if (Input.is_key_pressed(65) or Input.is_key_pressed(KEY_LEFT)):
 		dir += -cam_xform.basis[0]
-		get_node("./Sprite3D").set_flip_h(true)
-		get_node("./Sprite3D").set_animation("walking")
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		projdir = -0.4
+		rotation_degrees = Vector3(0,-90,0)
 	elif (Input.is_key_pressed(68) or Input.is_key_pressed(KEY_RIGHT)):
 		dir += cam_xform.basis[0]
-		get_node("./Sprite3D").set_flip_h(false)
-		get_node("./Sprite3D").set_animation("walking")
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		projdir = 0.4
+		rotation_degrees = Vector3(0,90,0)
 	else:
-		get_node("./Sprite3D").set_animation("idle")
+		get_node("./AnimationPlayer").stop(true)
 	
 	dir.y = 0
 	dir = dir.normalized()
@@ -38,9 +43,11 @@ func _physics_process(delta):
 	if (dir.dot(hvel) > 0 and Input.is_key_pressed(KEY_SHIFT)):
 		accel = ACCEL
 		target = dir*MAX_RUN_SPEED
+		get_node("./AnimationPlayer").playback_speed=3.0
 	elif (dir.dot(hvel) > 0):
 		accel = ACCEL
 		target = dir*MAX_SPEED
+		get_node("./AnimationPlayer").playback_speed=1.0
 	else:
 		accel = DEACCEL
 	
@@ -59,15 +66,23 @@ func _physics_process(delta):
 		
 	if get_global_transform().origin.y < 0:
 		set_translation(Vector3(0,1,0))
-		lifes = lifes - 1
+		lives = lives - 1
 	
-	if lifes == 0:
+	if lives == 0:
 		set_translation(Vector3(0,1,0))
-		lifes = 3
+		lives = 3
 		print("YOU DIED")
+		get_tree().change_scene("res://titlescreen.tscn")
 	
-	var playerx = get_global_transform().origin.x
-	var playery = get_global_transform().origin.y
-	var playerz = get_global_transform().origin.z
-	if playerz < 0 or playerz > 0:
-		set_translation(Vector3(playerx,playery,0))
+	if get_global_transform().origin.z < 0 or get_global_transform().origin.z > 0:
+		set_translation(Vector3(get_global_transform().origin.x,get_global_transform().origin.y,0))
+	
+func _on_Area_body_entered(body):
+	vel.y = JUMP_SPEED*2
+	
+func _input(event):
+	if Input.is_key_pressed(KEY_M):
+		var magic = preload("res://magic.tscn").instance()
+		magic.translation = Vector3(get_global_transform().origin.x + projdir,  get_global_transform().origin.y + 0.3, 0)
+		magic.linear_velocity = Vector3(projdir * 6, 0.5, 0)
+		get_parent().add_child(magic)

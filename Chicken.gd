@@ -1,7 +1,7 @@
 extends KinematicBody
 var orientation = 1
 
-func _process(delta):
+func _physics_process(delta):
 	if get_global_transform().origin.x <= -1:
 		orientation = 1
 		rotate_y(PI)
@@ -10,6 +10,6 @@ func _process(delta):
 		rotate_y(PI)
 	
 	if orientation == 1:
-		move_and_slide(Vector3(2,0,0))
+		move_and_slide(Vector3(3,-10,0))
 	elif orientation == 2:
-		move_and_slide(Vector3(-2,0,0))
+		move_and_slide(Vector3(-3,-10,0))
