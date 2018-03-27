@@ -2,7 +2,7 @@ extends Spatial
 var camsetting = 3
 
 func _physics_process(delta):
-	if (Input.is_key_pressed(KEY_ESCAPE)):
+	if (Input.is_action_pressed("pause")):
 		get_node("../UI/pause_popup").set_exclusive(true)
 		get_node("../UI/pause_popup").popup()
 		get_tree().set_pause(true)
@@ -24,3 +24,6 @@ func _input(event):
 		camsetting = camsetting + 1
 	elif (Input.is_key_pressed(KEY_PLUS) or Input.is_key_pressed(KEY_EQUAL)):
 		camsetting = camsetting - 1
+
+func _on_quit_pressed():
+	get_tree().quit()
