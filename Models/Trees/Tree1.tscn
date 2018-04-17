@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Models/Trees/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Models/Trees/Material_002.material" type="Material" id=2]
-[ext_resource path="res://Models/Trees/Material.material" type="Material" id=3]
+[ext_resource path="res://Models/Trees/MaterialDark.material" type="Material" id=3]
 
-[sub_resource type="ArrayMesh" id=123]
+[sub_resource type="ArrayMesh" id=1]
 
 resource_name = "Icosphere.008"
 blend_shape_mode = 1
@@ -23,7 +23,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=124]
+[sub_resource type="ArrayMesh" id=2]
 
 resource_name = "Icosphere.007"
 blend_shape_mode = 1
@@ -42,7 +42,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=125]
+[sub_resource type="ArrayMesh" id=3]
 
 resource_name = "Icosphere.003"
 blend_shape_mode = 1
@@ -61,7 +61,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=126]
+[sub_resource type="ArrayMesh" id=4]
 
 resource_name = "Icosphere.004"
 blend_shape_mode = 1
@@ -80,7 +80,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=127]
+[sub_resource type="ArrayMesh" id=5]
 
 resource_name = "Icosphere.005"
 blend_shape_mode = 1
@@ -99,7 +99,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=128]
+[sub_resource type="ArrayMesh" id=6]
 
 resource_name = "Icosphere.002"
 blend_shape_mode = 1
@@ -118,7 +118,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=129]
+[sub_resource type="ArrayMesh" id=7]
 
 resource_name = "Icosphere.001"
 blend_shape_mode = 1
@@ -137,7 +137,7 @@ surfaces/0 = {
 "vertex_count": 150
 }
 
-[sub_resource type="ArrayMesh" id=130]
+[sub_resource type="ArrayMesh" id=8]
 
 resource_name = "Cube"
 blend_shape_mode = 1
@@ -155,8 +155,9 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 11660
 }
+_sections_unfolded = [ "Resource", "surface_1" ]
 
-[sub_resource type="ArrayMesh" id=131]
+[sub_resource type="ArrayMesh" id=9]
 
 resource_name = "Icosphere"
 blend_shape_mode = 1
@@ -189,7 +190,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 123 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -205,7 +206,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 124 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -221,7 +222,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 125 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -237,7 +238,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 126 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -253,7 +254,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 127 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -269,7 +270,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 128 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -285,7 +286,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 129 )
+mesh = SubResource( 7 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -300,9 +301,10 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 130 )
+mesh = SubResource( 8 )
 skeleton = NodePath("..")
 material/0 = null
+_sections_unfolded = [ "material" ]
 
 [node name="Icosphere" type="MeshInstance" parent="." index="8"]
 
@@ -316,7 +318,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 131 )
+mesh = SubResource( 9 )
 skeleton = NodePath("..")
 material/0 = null
 

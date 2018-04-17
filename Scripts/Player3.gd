@@ -1,0 +1,99 @@
+extends KinematicBody
+
+var g = -10
+var vel = Vector3()
+var lives = 800
+var ProjectileVector = Vector3()
+var dir
+const MAX_SPEED = 5
+const MAX_RUN_SPEED = 9
+const JUMP_SPEED = 7
+const ACCEL= 2
+const DEACCEL= 20
+const MAX_SLOPE_ANGLE = 30
+
+func _physics_process(delta):
+	var dir = Vector3()
+	var cam_xform = get_node("./FlyingCamera").get_global_transform()
+	var cam_rotation = get_node("./FlyingCamera").rotation_degrees
+	
+	if (Input.is_action_pressed("ui_left")):
+		dir += -cam_xform.basis[0]
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-180,0)
+	elif (Input.is_action_pressed("ui_right")):
+		dir += cam_xform.basis[0]
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y,0)
+	elif (Input.is_action_pressed("ui_up")):
+		dir += -cam_xform.basis[2]
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y+90,0)
+	elif (Input.is_action_pressed("ui_down")):
+		dir += cam_xform.basis[2]
+		if get_node("./AnimationPlayer").is_playing() == false:
+			get_node("./AnimationPlayer").play("default")
+		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-90,0)
+	else:
+		get_node("./AnimationPlayer").stop(true)
+	
+	dir.y = 0
+	dir = dir.normalized()
+	
+	vel.y += delta*g
+	
+	var hvel = vel
+	hvel.y = 0
+
+	var accel
+	var target = dir*MAX_SPEED
+	
+	if (dir.dot(hvel) > 0 and Input.is_action_pressed("sprint")):
+		accel = ACCEL
+		target = dir*MAX_RUN_SPEED
+		get_node("./AnimationPlayer").playback_speed=3.0
+	elif (dir.dot(hvel) > 0):
+		accel = ACCEL
+		target = dir*MAX_SPEED
+		get_node("./AnimationPlayer").playback_speed=1.0
+	else:
+		accel = DEACCEL
+	
+	hvel = hvel.linear_interpolate(target, accel*delta)
+	
+	vel.x = hvel.x
+	vel.z = hvel.z
+	
+	vel = move_and_slide(vel,Vector3(0,1,0))
+	
+	if (is_on_floor() and Input.is_action_pressed("jump")):
+		vel.y = JUMP_SPEED
+
+	if (Input.is_action_pressed("fly")):
+		vel.y = JUMP_SPEED
+		
+	if get_global_transform().origin.y < 0:
+		set_translation(Vector3(0,1,0))
+		lives = lives - 1
+	
+	if lives == 0:
+		set_translation(Vector3(0,1,0))
+		lives = 3
+		print("YOU DIED")
+		get_tree().change_scene("res://Scenes/titlescreen.tscn")
+	
+	print(Vector3(3,5,3) * get_node("CollisionShape").get_global_transform().basis.z * get_node("CollisionShape").get_global_transform().basis.x)
+
+	#if get_global_transform().origin.z < 0 or get_global_transform().origin.z > 0:
+	#	set_translation(Vector3(get_global_transform().origin.x,get_global_transform().origin.y,0))
+		
+func _on_Area_body_entered(body):
+	vel.y = JUMP_SPEED*2
+	
+func _input(event):
+	if Input.is_action_pressed("shoot"):
+		var magic = preload("res://Scenes/magic.tscn").instance()
+		get_parent().add_child(magic)

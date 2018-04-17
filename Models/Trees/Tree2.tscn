@@ -4,7 +4,7 @@
 [ext_resource path="res://Models/Trees/Material_003.material" type="Material" id=2]
 [ext_resource path="res://Models/Trees/Material.material" type="Material" id=3]
 
-[sub_resource type="ArrayMesh" id=132]
+[sub_resource type="ArrayMesh" id=1]
 
 resource_name = "Icosphere.004"
 blend_shape_mode = 1
@@ -23,7 +23,7 @@ surfaces/0 = {
 "vertex_count": 240
 }
 
-[sub_resource type="ArrayMesh" id=133]
+[sub_resource type="ArrayMesh" id=2]
 
 resource_name = "Icosphere.003"
 blend_shape_mode = 1
@@ -42,7 +42,7 @@ surfaces/0 = {
 "vertex_count": 240
 }
 
-[sub_resource type="ArrayMesh" id=134]
+[sub_resource type="ArrayMesh" id=3]
 
 resource_name = "Icosphere.002"
 blend_shape_mode = 1
@@ -61,7 +61,7 @@ surfaces/0 = {
 "vertex_count": 240
 }
 
-[sub_resource type="ArrayMesh" id=135]
+[sub_resource type="ArrayMesh" id=4]
 
 resource_name = "Icosphere.001"
 blend_shape_mode = 1
@@ -80,7 +80,7 @@ surfaces/0 = {
 "vertex_count": 240
 }
 
-[sub_resource type="ArrayMesh" id=136]
+[sub_resource type="ArrayMesh" id=5]
 
 resource_name = "Cube"
 blend_shape_mode = 1
@@ -99,7 +99,7 @@ surfaces/0 = {
 "vertex_count": 2052
 }
 
-[sub_resource type="ArrayMesh" id=137]
+[sub_resource type="ArrayMesh" id=6]
 
 resource_name = "Icosphere"
 blend_shape_mode = 1
@@ -132,7 +132,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 132 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -148,7 +148,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 133 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -164,7 +164,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 134 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -180,7 +180,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 135 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -195,7 +195,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 136 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -211,7 +211,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 137 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 
