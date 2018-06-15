@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/AudioStreamPlayer.gd" type="Script" id=3]
 [ext_resource path="res://loadingscreen.png" type="Texture" id=4]
 
-[node name="Titlescreen" type="Node"]
+[node name="Titlescreen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -30,6 +30,7 @@ margin_right = 87.0
 margin_bottom = -5.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_neighbour_top = NodePath("../StartButton2")
 focus_neighbour_bottom = NodePath("../QuitButton")
 focus_mode = 2
 mouse_filter = 0
@@ -40,12 +41,39 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Start Spel"
+text = "Start Spel - 2.5D Test"
 flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Focus", "Margin", "Pause", "Rect", "Visibility" ]
 
-[node name="QuitButton" type="Button" parent="." index="2"]
+[node name="StartButton2" type="Button" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -95.0
+margin_right = 87.0
+margin_bottom = -55.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_bottom = NodePath("../StartButton")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Start Spel - 3D Test"
+flat = false
+align = 1
+_sections_unfolded = [ "Anchor", "Focus", "Margin", "Pause", "Rect", "Visibility" ]
+
+[node name="QuitButton" type="Button" parent="." index="3"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -72,7 +100,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Focus", "Margin", "Rect" ]
 
-[node name="CenterContainer" type="Control" parent="." index="3"]
+[node name="CenterContainer" type="Control" parent="." index="4"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -102,6 +130,10 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 [connection signal="button_down" from="StartButton" to="." method="_on_StartButton_button_down"]
 
 [connection signal="button_up" from="StartButton" to="." method="_on_StartButton_button_up"]
+
+[connection signal="button_down" from="StartButton2" to="." method="_on_StartButton2_button_down"]
+
+[connection signal="button_up" from="StartButton2" to="." method="_on_StartButton2_button_up"]
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 

@@ -3,7 +3,6 @@ extends KinematicBody
 var g = -10
 var vel = Vector3()
 var lives = 800
-var ProjectileVector = Vector3()
 var dir
 const MAX_SPEED = 5
 const MAX_RUN_SPEED = 9
@@ -12,6 +11,20 @@ const ACCEL= 2
 const DEACCEL= 20
 const MAX_SLOPE_ANGLE = 30
 
+#Shooting Variables
+var shootAnimator;
+var shootTimeout; 
+var isShooting; 
+var shootRaycast;
+
+func _ready():
+	shootTimeout = 0.0;
+	isShooting = false; 
+	
+	shootRaycast = self.get_node("CollisionShape/RayCast");
+	print(shootRaycast.transform.origin);
+	get_node("FlyingCamera/Camera").make_current()
+
 func _physics_process(delta):
 	var dir = Vector3()
 	var cam_xform = get_node("./FlyingCamera").get_global_transform()
@@ -19,14 +32,21 @@ func _physics_process(delta):
 	
 	if (Input.is_action_pressed("ui_left")):
 		dir += -cam_xform.basis[0]
+		print(cam_xform)
 		if get_node("./AnimationPlayer").is_playing() == false:
 			get_node("./AnimationPlayer").play("default")
-		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-180,0)
+			if Input.is_action_pressed("fp"):
+				get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y+90,0)
+			else:
+				get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-180,0)
 	elif (Input.is_action_pressed("ui_right")):
 		dir += cam_xform.basis[0]
 		if get_node("./AnimationPlayer").is_playing() == false:
 			get_node("./AnimationPlayer").play("default")
-		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y,0)
+			if Input.is_action_pressed("fp"):
+				get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y+90,0)
+			else:
+				get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y,0)
 	elif (Input.is_action_pressed("ui_up")):
 		dir += -cam_xform.basis[2]
 		if get_node("./AnimationPlayer").is_playing() == false:
@@ -36,7 +56,10 @@ func _physics_process(delta):
 		dir += cam_xform.basis[2]
 		if get_node("./AnimationPlayer").is_playing() == false:
 			get_node("./AnimationPlayer").play("default")
-		get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-90,0)
+		if Input.is_action_pressed("fp"):
+			get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y+90,0)
+		else:
+			get_node("./CollisionShape").rotation_degrees = Vector3(0,cam_rotation.y-90,0)
 	else:
 		get_node("./AnimationPlayer").stop(true)
 	
@@ -84,16 +107,52 @@ func _physics_process(delta):
 		lives = 3
 		print("YOU DIED")
 		get_tree().change_scene("res://Scenes/titlescreen.tscn")
-	
-	print(Vector3(3,5,3) * get_node("CollisionShape").get_global_transform().basis.z * get_node("CollisionShape").get_global_transform().basis.x)
-
 	#if get_global_transform().origin.z < 0 or get_global_transform().origin.z > 0:
 	#	set_translation(Vector3(get_global_transform().origin.x,get_global_transform().origin.y,0))
 		
+		
+	#Shooting Logic!
+	if(shootTimeout > 0.0):
+		shootTimeout -= delta;
+
+	if(shootTimeout <= 0.0 && isShooting):
+		weaponShoot();
+			
+func weaponShoot():
+	if(!isShooting):
+		return; 
+		
+	shootTimeout = 0.1;
+	#shootAnimator.play("FIRE"); 
+	
+	if(shootRaycast.is_colliding()):
+		var shootObject = shootRaycast.get_collider() ; 
+		#print(shootObject.tag)
+		if(shootObject.get("tag")):
+			print("Pew!");
+			shootObject.queue_free()
+		else:
+			print("Missed!")
+			
 func _on_Area_body_entered(body):
 	vel.y = JUMP_SPEED*2
 	
 func _input(event):
-	if Input.is_action_pressed("shoot"):
-		var magic = preload("res://Scenes/magic.tscn").instance()
-		get_parent().add_child(magic)
+	if(Input.is_action_pressed("shoot") && !isShooting):
+			isShooting = true ;
+			
+	if(!Input.is_action_pressed("shoot") && isShooting):
+			isShooting = false;
+	
+	if Input.is_action_pressed("fp"):
+		get_node("FirstPersonCamera/Camera").make_current()
+		get_node("../UI/Crosshair").show()
+		hide()
+		shootRaycast = self.get_node("FirstPersonCamera/Camera/RayCast");
+	else:
+		get_node("FlyingCamera/Camera").make_current()
+		get_node("../UI/Crosshair").hide()
+		show()
+		shootRaycast = self.get_node("CollisionShape/RayCast");
+	#	var magic = preload("res://Scenes/magic.tscn").instance()
+	#	get_parent().add_child(magic)

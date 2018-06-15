@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Player3.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/flying_camera.tscn" type="PackedScene" id=7]
-[ext_resource path="res://grassworldgridmap.tres" type="MeshLibrary" id=8]
+[ext_resource path="res://Gridmaps (Exported)/grassworldgridmap.tres" type="MeshLibrary" id=8]
 [ext_resource path="res://Models/Trees/Material_001.material" type="Material" id=9]
 [ext_resource path="res://Models/Trees/Material_002.material" type="Material" id=10]
 [ext_resource path="res://Models/Trees/Material.material" type="Material" id=11]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scripts/Chicken.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/BouncyBall.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/WalkingBand.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
@@ -953,6 +954,7 @@ script = ExtResource( 4 )
 
 [node name="Player" parent="." index="4" instance=ExtResource( 5 )]
 
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.552055, 1.0539 )
 script = ExtResource( 6 )
 
 [node name="FlyingCamera" parent="Player" index="2" instance=ExtResource( 7 )]
@@ -972,7 +974,7 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( -131066, 1, 1048576, -131064, 1, 1048576, 983049, 6, 851968, 983052, 6, 851968, 1048572, 6, 1441792, 1048575, 6, 1441792, 983045, 7, 327680, 6, 65517, -535429120, 196617, 65517, 1441792, -65526, 65517, -535429120, 1, 65519, 0, 196609, 65519, 0, 196618, 65519, 0, -131058, 65519, 0, -131058, 65522, 0, -131058, 65524, 0, -131058, 65526, 0, 1048572, 65527, 1441792, 1048572, 65528, 1441792, 1048572, 65535, 1441792, -131072, 65535, 1441792, -131070, 65535, 1441792, -131058, 65535, 0 )
+"cells": PoolIntArray( -131066, 1, 1048576, -131064, 1, 1048576, 983049, 6, 851968, 983052, 6, 851968, 1048572, 6, -535429120, 1048575, 6, 1441792, 983045, 7, 327680, 6, 65517, 1441792, 196617, 65517, 1441792, -65526, 65517, 1441792, 1, 65519, 0, 196609, 65519, 0, 196618, 65519, 0, -131058, 65519, 0, -131058, 65522, 0, -131058, 65524, 0, -131058, 65526, 0, 1048572, 65527, 1441792, 1048572, 65528, 1441792, 1048572, 65535, 1441792, -131072, 65535, 1441792, -131070, 65535, 1441792, -131058, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,

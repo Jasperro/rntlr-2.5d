@@ -611,7 +611,7 @@ _sections_unfolded = [ "Axis Lock", "Collision", "Pause", "Transform", "Visibili
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0 )
 shape = SubResource( 1 )
 disabled = false
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Armature" type="Skeleton" parent="CollisionShape" index="0"]
 
@@ -980,6 +980,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Low_Poly_Characte_001" type="MeshInstance" parent="CollisionShape/Armature" index="0"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1004,7 +1005,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347347, 1.36601, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 10, -3, 0 )
-collision_mask = 4
+collision_mask = 24584
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
@@ -1016,10 +1017,5 @@ playback_speed = 1.0
 anims/default = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
-
-[node name="Facing" type="Spatial" parent="." index="2"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 0 )
-_sections_unfolded = [ "Transform" ]
 
 

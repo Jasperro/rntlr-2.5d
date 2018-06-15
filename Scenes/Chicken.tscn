@@ -1,16 +1,80 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Chicken.gd" type="Script" id=1]
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Spatial
+script/source = "extends KinematicBody
+var orientation = 1
 
-func _on_Area_body_entered(body):
-	queue_free()
+export var tag = \"Chicken\"
+
+#func _physics_process(delta):
+#	if get_global_transform().origin.x <= -1:
+#		orientation = 1
+#		rotate_y(PI)
+#	elif get_global_transform().origin.x >= 5:
+#		orientation = 2
+#		rotate_y(PI)
+#	
+#	if orientation == 1:
+#		move_and_slide(Vector3(3,-10,0))
+#	elif orientation == 2:
+#		move_and_slide(Vector3(-3,-10,0))
 "
 
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0, 0, 0, 1 )
+metallic = 1.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.764695
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=3]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -21,13 +85,124 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 660,
+"material": SubResource( 2 ),
 "name": "Material_004",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 654
 }
 
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="SpatialMaterial" id=4]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 0.887032, 0.723055, 1 )
+metallic = 0.310828
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.691924
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 1.5, 1.5, 1.5, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="SpatialMaterial" id=5]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.8, 0.35075, 0.027565, 1 )
+metallic = 1.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.542695
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0.26, 0.26, 0.26, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=6]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -38,6 +213,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 1242,
+"material": SubResource( 4 ),
 "name": "Material_001",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -50,13 +226,69 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 156,
+"material": SubResource( 5 ),
 "name": "Material_002",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 156
 }
 
-[sub_resource type="ArrayMesh" id=4]
+[sub_resource type="SpatialMaterial" id=7]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.8, 0.386256, 0.0431886, 1 )
+metallic = 1.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.542695
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0.25, 0.25, 0.25, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=8]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -67,13 +299,65 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 54,
+"material": SubResource( 7 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 45
 }
 
-[sub_resource type="ArrayMesh" id=5]
+[sub_resource type="SpatialMaterial" id=9]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0, 0, 0, 1 )
+metallic = 1.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.764695
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=10]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -84,13 +368,72 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 660,
+"material": SubResource( 9 ),
 "name": "Material_003",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 654
 }
 
-[sub_resource type="ArrayMesh" id=6]
+[sub_resource type="SpatialMaterial" id=11]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 1
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.8, 0, 0.00380864, 1 )
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture_channel = 0
+roughness = 0.842472
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0.765625, 0.0508423, 0.0508423, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = true
+refraction_scale = 0.05
+refraction_texture_channel = 0
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Emission", "Flags", "Metallic", "NormalMap", "Parameters", "Refraction", "Vertex Color" ]
+
+[sub_resource type="ArrayMesh" id=12]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -101,34 +444,35 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98051,
 "index_count": 324,
+"material": SubResource( 11 ),
 "name": "Material_005",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 240
 }
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=13]
 
 extents = Vector3( 4, 3.5, 4 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=14]
 
 extents = Vector3( 5, 4, 5 )
 
 [node name="Chicken" type="Spatial"]
 
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 2, 0.42, 0 )
-script = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 2, 0.6, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="Body" type="KinematicBody" parent="." index="0"]
 
 transform = Transform( 1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
-collision_layer = 9
-collision_mask = 9
+collision_layer = 24584
+collision_mask = 24584
 axis_lock_linear_x = false
 axis_lock_linear_y = false
 axis_lock_linear_z = false
@@ -136,8 +480,9 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 1 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Axis Lock", "Collision", "Transform", "Visibility", "collision" ]
+tag = "Chicken"
 
 [node name="Sphere_001" type="MeshInstance" parent="Body" index="0"]
 
@@ -151,7 +496,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -166,7 +511,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
@@ -183,7 +528,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 8 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -199,7 +544,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
+mesh = SubResource( 10 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -214,13 +559,13 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 6 )
+mesh = SubResource( 12 )
 skeleton = NodePath("..")
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Body" index="5"]
 
-shape = SubResource( 7 )
+shape = SubResource( 13 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -251,7 +596,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Body/Area" index="0"]
 
-shape = SubResource( 8 )
+shape = SubResource( 14 )
 disabled = false
 
 [connection signal="body_entered" from="Body/Area" to="." method="_on_Area_body_entered"]

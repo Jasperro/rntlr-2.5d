@@ -7,5 +7,5 @@ func _physics_process(delta):
 		lifegrammar = " Life"
 	else:
 		lifegrammar = " Lives"
-	set_text(String(get_node("../../Player").get("lives")) + lifegrammar)
+	#set_text(String(get_node("../../Player").get("lives")) + lifegrammar)
 	pass

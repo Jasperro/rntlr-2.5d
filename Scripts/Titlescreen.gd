@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	get_node("./StartButton").grab_focus()
+	get_node("./StartButton2").grab_focus()
 
 func _on_StartButton_button_down():
 	get_node("./CenterContainer/Loading").show()
@@ -17,6 +17,9 @@ func _on_StartButton_button_down():
 
 func _on_StartButton_button_up():
 	get_tree().change_scene("res://Scenes/level1.tscn")
+
+func _on_StartButton2_button_up():
+	get_tree().change_scene("res://Scenes/3D levels/3dtest.tscn")
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
