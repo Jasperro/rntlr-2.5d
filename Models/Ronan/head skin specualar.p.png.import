@@ -8,10 +8,7 @@ path.etc2="res://.import/head skin specualar.p.png-2957272f74325212dfb5842a2bbd3
 [deps]
 
 source_file="res://Models/Ronan/head skin specualar.p.png"
-source_md5="7a382992619de223964649f4958118d9"
-
 dest_files=[ "res://.import/head skin specualar.p.png-2957272f74325212dfb5842a2bbd3086.s3tc.stex", "res://.import/head skin specualar.p.png-2957272f74325212dfb5842a2bbd3086.etc2.stex" ]
-dest_md5="2ecb529d44bf0c7d27477fdf0195d84d"
 
 [params]
 

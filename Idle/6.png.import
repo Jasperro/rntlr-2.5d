@@ -7,10 +7,7 @@ path="res://.import/6.png-dff0717a84e573a8963b5cc97db36b2c.stex"
 [deps]
 
 source_file="res://Idle/6.png"
-source_md5="2e4172f2e10baac38a5b9aa325f46808"
-
 dest_files=[ "res://.import/6.png-dff0717a84e573a8963b5cc97db36b2c.stex" ]
-dest_md5="fb287cd86830adbe580edb0beb4d72ed"
 
 [params]
 

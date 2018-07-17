@@ -8,10 +8,7 @@ path.etc2="res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.etc2.stex"
 [deps]
 
 source_file="res://logo.png"
-source_md5="500da7383831540c17b47140d3fdfb8e"
-
 dest_files=[ "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.s3tc.stex", "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.etc2.stex" ]
-dest_md5="d0d9a3b139b662c7d11d6b669e6993ea"
 
 [params]
 

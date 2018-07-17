@@ -7,10 +7,7 @@ path="res://.import/movebuttonPressed.png-1538a3a9c50c9ce7e1c6c171d7cac047.stex"
 [deps]
 
 source_file="res://UI/movebuttonPressed.png"
-source_md5="a78f231159f21c46b5ec7f446c602688"
-
 dest_files=[ "res://.import/movebuttonPressed.png-1538a3a9c50c9ce7e1c6c171d7cac047.stex" ]
-dest_md5="f12bfe98dfc7d1ebff605ccf134b984b"
 
 [params]
 

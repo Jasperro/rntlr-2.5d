@@ -8,10 +8,7 @@ path.etc2="res://.import/jeans_bump.png-3623a1677dcb352328631d922c85deba.etc2.st
 [deps]
 
 source_file="res://Models/Ronan/jeans_bump.png"
-source_md5="c37c253fcff7e54d2139bbc862547a5e"
-
 dest_files=[ "res://.import/jeans_bump.png-3623a1677dcb352328631d922c85deba.s3tc.stex", "res://.import/jeans_bump.png-3623a1677dcb352328631d922c85deba.etc2.stex" ]
-dest_md5="e447885642234e9516d01a362a850b23"
 
 [params]
 
